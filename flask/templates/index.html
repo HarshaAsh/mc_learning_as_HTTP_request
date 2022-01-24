@@ -1,0 +1,97 @@
+<style>
+* {
+    box-sizing: border-box;
+}
+body, html{
+    /* margin */
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width:100%;
+    justify-content:center;
+    align-items: center;
+}
+
+#bodydiv{
+    transition: opacity .5s ease-in-out;
+    /* height: calc(100% - 60px); */
+    height: 100%;
+    width:100%;
+    padding-top: 57px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: grey;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+<header>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <span class="navbar-brand">
+            <a href="/index">aharsha</a>
+        </span> <!--brand name-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <!--toggler button-->
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li id="raw_historic_data" class="nav-item"><a class="nav-link" href="https://www.harshaash.com/Python/Machine%20learning%20as%20HTTP%20Request/">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+</div>
+
+<div  id="bodydiv" class="container-flui">
+    <div class="homePageBox" id="homePageId">
+        <h2>Predicting PM25 at Hyderabad</h2>
+        <div>This is a flask app built to deploy a ML model that predicts PM25 near my home in Hyderabad.
+            This website serves a <b>GET request at "/predict" with the params {date:'YYYY-MM-DD'}</b> which uses the pre-trained ML model and predicts the pollution for the date provided.</div>
+        <div><h3>Context</h3> Air pollution is a big issue in Hyderabad, and I have built a Machine learning app that predicts the amount of PM25 particles in air. The ARIMA model is deployed using
+            <a href = 'https://www.harshaash.com/Python/Machine%20learning%20as%20HTTP%20Request/'>pythoneverywhere</a> and the data is stored at <a href = 'https://www.harshaash.com/Python/Saving%20predictions%20in%20database/'>ElephantDB</a>.
+            Finally, the website <a href="https://hydpm25.herokuapp.com/plots">hydpm25.herokuapp.com</a> displays the data in a nice dashboard.
+        </div>
+        <div><h3>Usage</h3> A cron job at 1:05AM GMT makes the HTTP request from this app and stores the prediction in an ElephantDB table.</div>
+
+        <div><h3>API Documentation</h3></div>
+        <div class="table-responsive">The stored data can be accessed using Rest API:
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>API</th><th>Description</th><th>Parameters</th><th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>predict</td><td>Get the prediction using ARIMA for the date</td>
+                        <td>date='YYYY-MM-DD'</td>
+                        <td><a href = "https://harshaash.pythonanywhere.com/predict?date=2021-10-17">GET</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/predict?date=2021-10-17" title="API" class="btn btn-success">Try the API</a>
+        <a href="https://www.harshaash.com/Python/Machine%20learning%20as%20HTTP%20Request/" title="Dashboard" class="btn btn-success">Blog</a>
+</div>
